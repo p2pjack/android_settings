@@ -68,7 +68,7 @@
     <uses-permission android:name="android.permission.REBOOT" />
     <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
 
-	    <permission
+	<permission
         android:name="android.permission.REQUEST_SUPERUSER"
         android:protectionLevel="signature" />
     <permission
@@ -90,6 +90,14 @@
         android:logo="@drawable/ic_action_permission"
         android:permissionGroup="android.permission-group.SUPERUSER"
         android:protectionLevel="dangerous" />
+
+    <application android:label="@string/settings_label"
+        android:icon="@mipmap/ic_launcher_settings"
+        android:taskAffinity=""
+        android:theme="@android:style/Theme.Holo"
+        android:uiOptions="splitActionBarWhenNarrow"
+        android:hardwareAccelerated="true"
+        android:supportsRtl="true">
 
 <!-- Only system/su can open this activity -->
         <!-- This activity will then call the MultitaskSuRequestActivity to create a new task stack -->
@@ -132,29 +140,6 @@
             android:name="com.koushikdutta.superuser.SuReceiver"
             android:permission="android.permission.REPORT_SUPERUSER" />
 
-        <receiver
-            android:name=".cyanogenmod.superuser.PackageChangeReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <data android:scheme="package" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <data android:scheme="package" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-
-    <application android:label="@string/settings_label"
-            android:icon="@mipmap/ic_launcher_settings"
-            android:taskAffinity=""
-            android:theme="@style/Theme.Settings"
-            android:hardwareAccelerated="true"
-            android:requiredForAllUsers="true"
-            android:supportsRtl="true">
 
         <!-- Settings -->
 
